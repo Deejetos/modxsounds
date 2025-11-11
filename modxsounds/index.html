@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎹 MODX Sounds - Pacotes e Fundos Musicais</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ====== LOGIN ====== -->
+  <div id="loginContainer" class="active">
+    <h2>Entrar na MODX Sounds</h2>
+    <input type="email" id="loginEmail" placeholder="E-mail" required>
+    <input type="password" id="loginSenha" placeholder="Senha" required>
+    <button onclick="login()">Entrar</button>
+    <p>Não tem conta? <a href="#" onclick="mostrarCadastro()">Cadastre-se</a></p>
+  </div>
+
+  <!-- ====== CADASTRO ====== -->
+  <div id="cadastroContainer">
+    <h2>Criar Conta</h2>
+    <input type="text" id="cadNome" placeholder="Nome completo" maxlength="60" required>
+    <input type="email" id="cadEmail" placeholder="E-mail" maxlength="60" required>
+    <input type="password" id="cadSenha" placeholder="Senha" minlength="6" maxlength="20" required>
+    <input type="text" id="cadCPF" placeholder="CPF (somente números)" maxlength="11" pattern="\d{11}" required>
+    <input type="text" id="cadRG" placeholder="RG (somente números)" maxlength="9" pattern="\d{9}" required>
+    <input type="text" id="cadTelefone" placeholder="(DD) 90000-0000" maxlength="15" required oninput="formatarTelefone(this)">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <p>Já tem conta? <a href="#" onclick="mostrarLogin()">Fazer login</a></p>
+  </div>
+
+  <!-- ====== CONTEÚDO DA PLATAFORMA ====== -->
+  <div id="plataforma" style="display: none;">
+    <header>
+      <h1><a href="#inicio">🎹 MODX Sounds</a></h1>
+      <nav>
+        <a href="#inicio">Início</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#produto">Produto</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div id="userInfo"></div>
+    </header>
+
+    <!-- ====== INÍCIO ====== -->
+    <section id="inicio" class="hero">
+      <h2>Pacotes de som exclusivos para Yamaha MODX7</h2>
+      <p>Fundos musicais, timbres e sons profissionais prontos pra tocar.</p>
+      <a href="#catalogo" class="btn">Ver catálogo</a>
+    </section>
+
+    <!-- ====== CATÁLOGO ====== -->
+    <section id="catalogo">
+      <h2>Catálogo de Pacotes</h2>
+
+      <div class="catalogo">
+        <div class="produto">
+          <img src="assets/img/images.jpeg" alt="Pacote Gospel Premium" />
+          <h3>Pacote Premium</h3>
+          <audio controls src="assets/sounds/pacote1-preview.mp3"></audio>
+          <p>R$ 29,90</p>
+          <a href="#produto" class="btn">Ver detalhes</a>
+        </div>
+
+        <div class="produto">
+          <img src="assets/img/pacote2.jpg" alt="Pacote Sertanejo" />
+          <h3>Fundos Bronze</h3>
+          <audio controls src="assets/sounds/pacote2-preview.mp3"></audio>
+          <p>R$ 19,90</p>
+          <a href="https://www.paypal.com/paypalme/seulink" class="btn" target="_blank">Comprar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DETALHE DO PRODUTO ====== -->
+    <section id="produto" class="produto-detalhe">
+      <div class="imagem">
+        <img src="assets/img/images.jpeg" alt="Pacote Gospel Premium" />
+      </div>
+
+      <div class="info">
+        <h2>Pacote Premium</h2>
+        <p class="descricao">
+          Timbres e camadas realistas criadas especialmente para Yamaha MODX7.  
+          Sons prontos para tocar em igrejas e eventos ao vivo, com excelente resposta e qualidade profissional.
+        </p>
+
+        <audio controls src="assets/sounds/pacote1-preview.mp3"></audio>
+
+        <p class="preco">R$ 29,90</p>
+        <a href="https://www.mercadopago.com.br/checkout/v1/redirect?preference-id=SUA_ID_AQUI" class="btn" target="_blank">Comprar Agora</a>
+      </div>
+    </section>
+
+    <!-- ====== PERFIL DO USUÁRIO ====== -->
+    <section id="perfil" class="perfil" style="display: none;">
+      <h2>Meu Perfil</h2>
+      <div id="dadosUsuario"></div>
+      <button class="btn" onclick="voltarPlataforma()">Voltar</button>
+      <button class="btn" style="background:#d33; margin-left:10px;" onclick="logout()">Sair da conta</button>
+    </section>
+
+    <!-- ====== CONTATO ====== -->
+    <section id="contato" class="contato">
+      <h2>Entre em contato</h2>
+      <p>Envie uma mensagem com dúvidas, suporte ou pedidos personalizados.</p>
+
+      <form action="https://formsubmit.co/seuemail@exemplo.com" method="POST">
+        <input type="text" name="nome" placeholder="Seu nome" required />
+        <input type="email" name="email" placeholder="Seu e-mail" required />
+        <textarea name="mensagem" placeholder="Digite sua mensagem..." rows="6" required></textarea>
+        <button type="submit" class="btn">Enviar mensagem</button>
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://modxsounds.com.br/obrigado.html" />
+      </form>
+    </section>
+
+    <footer>
+      <p>© 2025 MODX Sounds. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <!-- ====== SCRIPT DE LOGIN/CADASTRO ====== -->
+  <script>
+    // Alternar telas
+    function mostrarCadastro() {
+      document.getElementById('loginContainer').classList.remove('active');
+      document.getElementById('cadastroContainer').classList.add('active');
+    }
+
+    function mostrarLogin() {
+      document.getElementById('cadastroContainer').classList.remove('active');
+      document.getElementById('loginContainer').classList.add('active');
+    }
+
+    // Máscara de telefone
+    function formatarTelefone(input) {
+      let valor = input.value.replace(/\D/g, "");
+      if (valor.length > 11) valor = valor.slice(0, 11);
+      if (valor.length <= 10)
+        input.value = valor.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+      else
+        input.value = valor.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    }
+
+    // Cadastrar novo usuário
+    function cadastrar() {
+      const nome = document.getElementById('cadNome').value.trim();
+      const email = document.getElementById('cadEmail').value.trim();
+      const senha = document.getElementById('cadSenha').value;
+      const cpf = document.getElementById('cadCPF').value.trim();
+      const rg = document.getElementById('cadRG').value.trim();
+      const telefone = document.getElementById('cadTelefone').value.trim();
+
+      if (!nome || !email || !senha || !cpf || !rg || !telefone) {
+        alert("Preencha todos os campos.");
+        return;
+      }
+
+      let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+      if (usuarios.find(u => u.email === email)) {
+        alert("Já existe uma conta com esse e-mail!");
+        return;
+      }
+
+      usuarios.push({ nome, email, senha, cpf, rg, telefone });
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+      alert("Cadastro realizado com sucesso! Agora faça login.");
+      mostrarLogin();
+    }
+
+    // Login do usuário
+    function login() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const senha = document.getElementById('loginSenha').value;
+      let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      const user = usuarios.find(u => u.email === email && u.senha === senha);
+
+      if (user) {
+        localStorage.setItem("usuarioLogado", JSON.stringify(user));
+        abrirPlataforma(user);
+      } else {
+        alert("E-mail ou senha incorretos.");
+      }
+    }
+
+    // Mostrar plataforma
+    function abrirPlataforma(user) {
+      document.getElementById('loginContainer').style.display = 'none';
+      document.getElementById('cadastroContainer').style.display = 'none';
+      document.getElementById('plataforma').style.display = 'block';
+
+      document.getElementById('userInfo').innerHTML = `
+        <span>👤 ${user.nome.split(" ")[0]}</span>
+        <button class="btn" style="margin-left:10px; padding:5px 12px; font-size:0.9em;" onclick="abrirPerfil()">Perfil</button>
+      `;
+    }
+
+    function abrirPerfil() {
+      const user = JSON.parse(localStorage.getItem('usuarioLogado'));
+      if (user) {
+        document.getElementById('dadosUsuario').innerHTML = `
+          <p><strong>Nome:</strong> ${user.nome}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>CPF:</strong> ${user.cpf}</p>
+          <p><strong>RG:</strong> ${user.rg}</p>
+          <p><strong>Telefone:</strong> ${user.telefone}</p>
+        `;
+        document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+        document.getElementById('perfil').style.display = 'block';
+      }
+    }
+
+    function voltarPlataforma() {
+      document.getElementById('perfil').style.display = 'none';
+      document.getElementById('inicio').style.display = 'block';
+      document.getElementById('catalogo').style.display = 'block';
+      document.getElementById('produto').style.display = 'block';
+      document.getElementById('contato').style.display = 'block';
+    }
+
+    function logout() {
+      localStorage.removeItem("usuarioLogado");
+      location.reload();
+    }
+
+    window.onload = () => {
+      const user = JSON.parse(localStorage.getItem('usuarioLogado'));
+      if (user) abrirPlataforma(user);
+    };
+  </script>
+
+</body>
+</html>

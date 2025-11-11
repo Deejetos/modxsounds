@@ -1,0 +1,327 @@
+/* ====== ESTILO GERAL ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    background-color: #0e0e0e;
+    color: #f4f4f4;
+    line-height: 1.7; /* leve espaçamento para leitura */
+    font-size: 16px; /* tamanho base confortável */
+  }
+  
+  header {
+    background: linear-gradient(90deg, #222, #111);
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header h1 {
+    font-size: 1.8em;
+  }
+  
+  header h1 a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav a {
+    color: #ddd;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1em;
+    transition: 0.3s;
+  }
+  
+  nav a:hover {
+    color: #00c2ff;
+  }
+  
+  .btn {
+    display: inline-block;
+    background: #00c2ff;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background 0.3s;
+  }
+  
+  .btn:hover {
+    background: #009bd1;
+  }
+  
+  footer {
+    background: #111;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #aaa;
+    margin-top: 60px;
+  }
+  
+  section {
+    padding: 60px 10%;
+  }
+  
+  /* ====== HERO (INÍCIO) ====== */
+  .hero {
+    text-align: center;
+    background: 
+      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* sobreposição escura */
+      url("MODX_M_sound_banner_cd7e4922d129263d60cb809907aafbb5.avif") no-repeat center top;
+    background-size: cover;
+    background-position: top;
+    padding: 120px 10% 80px;
+    color: #fff;
+  }
+  
+  .hero h2 {
+    font-size: 2.4em; /* título um pouco maior */
+    margin-bottom: 15px;
+    color: #00c2ff;
+  }
+  
+  .hero p {
+    font-size: 1.2em; /* parágrafo um pouco maior */
+    margin-bottom: 25px;
+  }
+  
+  /* ====== CATÁLOGO ====== */
+  .catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .produto {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 194, 255, 0.2);
+  }
+  
+  .produto img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .produto h3 {
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 1.3em; /* leve aumento */
+  }
+  
+  .produto p {
+    margin: 10px 0;
+    color: #ccc;
+    font-size: 1.1em; /* leve aumento */
+  }
+  
+  audio {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* ====== DETALHE DO PRODUTO ====== */
+  .produto-detalhe {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .produto-detalhe img {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+  
+  .produto-detalhe .info {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .produto-detalhe .info h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+  
+  .produto-detalhe .descricao {
+    margin-bottom: 15px;
+    color: #ddd;
+    font-size: 1.1em;
+  }
+  
+  .produto-detalhe .preco {
+    font-size: 1.6em;
+    color: #00c2ff;
+    margin-bottom: 15px;
+  }
+  
+  /* ====== CONTATO ====== */
+  .contato h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+  
+  .contato p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+  }
+  
+  .contato form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 30px auto;
+  }
+  
+  .contato input, .contato textarea {
+    background: #111;
+    border: 1px solid #333;
+    color: #eee;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1em;
+  }
+  
+  .contato input:focus, .contato textarea:focus {
+    border-color: #00c2ff;
+    outline: none;
+  }
+  
+  /* ====== RESPONSIVO ====== */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    nav a {
+      display: inline-block;
+      margin: 10px;
+    }
+  
+    .produto-detalhe {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .produto-detalhe img {
+      max-width: 100%;
+    }
+  }
+  /* ====== LOGIN & CADASTRO ====== */
+#loginContainer, #cadastroContainer {
+  display: none;
+  max-width: 400px;
+  margin: 80px auto;
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 194, 255, 0.2);
+  text-align: center;
+}
+
+#loginContainer.active, #cadastroContainer.active {
+  display: block;
+}
+
+#loginContainer h2, #cadastroContainer h2 {
+  color: #00c2ff;
+  margin-bottom: 20px;
+}
+
+#loginContainer input, #cadastroContainer input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+  font-size: 1em;
+}
+
+#loginContainer button, #cadastroContainer button {
+  width: 100%;
+  background: #00c2ff;
+  border: none;
+  color: white;
+  font-size: 1em;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#loginContainer button:hover, #cadastroContainer button:hover {
+  background: #009bd1;
+}
+
+#loginContainer p, #cadastroContainer p {
+  margin-top: 10px;
+  color: #ccc;
+}
+
+#loginContainer a, #cadastroContainer a {
+  color: #00c2ff;
+  text-decoration: none;
+}
+
+#loginContainer a:hover, #cadastroContainer a:hover {
+  text-decoration: underline;
+}
+
+/* Usuário logado */
+#userInfo {
+  color: #00c2ff;
+  font-weight: 500;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+}
+
+/* Perfil do usuário */
+.perfil {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 600px;
+  margin: 50px auto;
+  box-shadow: 0 0 15px rgba(0, 194, 255, 0.2);
+}
+
+.perfil h2 {
+  color: #00c2ff;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#dadosUsuario p {
+  margin-bottom: 10px;
+  color: #ccc;
+  font-size: 1.1em;
+}
